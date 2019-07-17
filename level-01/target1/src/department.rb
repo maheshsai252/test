@@ -101,17 +101,19 @@ class Department
   		return "Not found"
   	end
 
-  	@sections.each do |sec|
-  		sec.remove student_name
-  	end  	
   	if(@section_names.include? section)
   		@index=@section_names.index(section)
   		if(@sections[@index].total_students<10)
+
+          @sections.each do |sec|
+            sec.remove student_name
+          end
+
       		@retstring=@sections[@index].enroll student_name
       		@retstring="You have been allotted section "+section+"\n"+@retstring
-      	else
+      else
       		return "Error: No more seats are available in section "+section
-      	end
+      end
   	else
   		return "Error: No such section exists"
   	end
