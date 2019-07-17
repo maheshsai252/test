@@ -97,15 +97,17 @@ class Department
   end
 
   def change_section(student_name, section)
+    #Check if student exists in this department
   	if((@students.include? student_name)==false)
   		return "Not found"
   	end
 
   	if(@section_names.include? section)
   		@index=@section_names.index(section)
-  		if(@sections[@index].total_students<10)
+  		if(@sections[@index].total_students<10) #Check if seats are available in the desired section
 
-          @sections.each do |sec|
+          #Remove existing record from the section before adding the same student in another section
+          @sections.each do |sec|   
             sec.remove student_name
           end
 
