@@ -6,7 +6,7 @@ class Department
 
   attr_accessor :sections
   attr_accessor :total_students
-  @students
+  attr_reader :students
   @section_names
   @dept_name
   
@@ -113,8 +113,16 @@ class Department
 
       		@retstring=@sections[@index].enroll student_name
       		@retstring="You have been allotted section "+section+"\n"+@retstring
-      else
-      		return "Error: No more seats are available in section "+section
+          return @retstring    
+      else #In case seats are filled but the student is already in the same section he/she wishes to be in 
+         if(@sections[@index].studentlist.keys.include? student_name)
+          @sections[@index].remove student_name
+          @retstring=@sections[@index].enroll student_name
+          @retstring="You have been allotted section "+section+"\n"+@retstring
+          return @retstring
+         else
+          return "Error: No more seats are available in section "+section
+         end
       end
   	else
   		return "Error: No such section exists"

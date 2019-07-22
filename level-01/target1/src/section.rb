@@ -3,7 +3,7 @@ class Section
 
 	attr_accessor :total_students
 	attr_accessor :prefix_acronym
-	@studentlist
+	attr_reader :studentlist
 
 	def initialize(prefix_acronym)
     self.total_students=0
