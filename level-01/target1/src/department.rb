@@ -106,6 +106,10 @@ class Department
   		@index=@section_names.index(section)
   		if(@sections[@index].total_students<10) #Check if seats are available in the desired section
 
+          if(@sections[@index].studentlist.keys.include? student_name)
+            return "Error: The student is already in this section"
+          end          
+
           #Remove existing record from the section before adding the same student in another section
           @sections.each do |sec|   
             sec.remove student_name
@@ -116,10 +120,7 @@ class Department
           return @retstring    
       else #In case seats are filled but the student is already in the same section he/she wishes to be in 
          if(@sections[@index].studentlist.keys.include? student_name)
-          @sections[@index].remove student_name
-          @retstring=@sections[@index].enroll student_name
-          @retstring="You have been allotted section "+section+"\n"+@retstring
-          return @retstring
+          return "Error: The student is already in this section"
          else
           return "Error: No more seats are available in section "+section
          end

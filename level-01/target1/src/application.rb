@@ -39,6 +39,11 @@ class Application
 
         #Check if any more seats are available in the department
         if(@departments[@index].total_students<30)
+
+            if(@departments[@index].students.include? student_name)
+                return "Error: The student is already in this department"
+            end
+
     	   @retstring=""
     	   @departments.each do |dept|
     		  @retstring=dept.remove student_name
@@ -52,11 +57,7 @@ class Application
     	   return departments[@index].enroll student_name
         else #In case seats are filled but the student is already in the same department he/she wishes to be in
             if(@departments[@index].students.include? student_name)
-                @retstring=@departments[@index].remove student_name 
-                if(@retstring=="Not found") #Check if the student exists in any of the departments. If so, enroll into desired department
-                    return "Error: No such student is found\n\n"
-                end
-                return departments[@index].enroll student_name
+                return "Error: The student is already in this department"
             else
                 return "Error: There are no more seats in #{student_department}\n"
             end
