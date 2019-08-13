@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Student Portal | Change Dept</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles2.css">
+	<link rel="shortcut icon" type="image/png" href="favicon1.png"/>
+</head>
+
+<body>
+
+	<div class="main">
+		<h1>REQUEST DEPARTMENT CHANGE</h1>
+
+		<form action="req_dept_change.html" accept-charset="utf-8" onsubmit="return alert('Department changed successfully!')" id="deptchangeform">
+			<label for="RollNo">Roll Number:</label>
+			<input type="text" name="RollNo"> 
+			<label for="Department">Select Department:</label>
+			<select name="Department">
+				<option value="EEE">EEE</option>
+				<option value="MECH">MECH</option>
+				<option value="CSE">CSE</option>
+				<option value="CIVIL">CIVIL</option>
+			</select>
+			
+		</form>
+		<div class="EndSection">
+			<span class="EndSectionItem"><a href="index.html" class="BackButton">Go Back</a></span>
+			<span class="EndSectionItem"><input type="submit" form="deptchangeform" value="Request" class="SubmitButton"></span>
+		</div>
+	</div>
+
+</body>
+
+</html>
